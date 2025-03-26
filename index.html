@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>MJHill</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Mike Hill consulting" />
+  <meta name="keywords" content="resume CV" />
+  <meta name="author" content="Mike Hill" />
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    @font-face {
+      font-family: metropolis;
+      src: url("WOFF2/Metropolis-ExtraLightItalic.woff2") format("woff2"),
+        url("WOFF/Metropolis-ExtraLightItalic.woff") format("woff");
+      font-weight: 200;
+      font-style: italic;
+    }
+
+    @font-face {
+      font-family: metropolis;
+      src: url("WOFF2/Metropolis-Regular.woff2") format("woff2"),
+        url("WOFF/Metropolis-Regular.woff") format("woff");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: metropolis;
+      src: url("WOFF2/Metropolis-SemiBold.woff2") format("woff2"),
+        url("WOFF/Metropolis-SemiBold.woff") format("woff");
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: metropolis;
+      src: url("WOFF2/Metropolis-Bold.woff2") format("woff2"),
+        url("WOFF/Metropolis-Bold.woff") format("woff");
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: metropolis;
+      src: url("WOFF2/Metropolis-ExtraBold.woff2") format("woff2"),
+        url("WOFF/Metropolis-ExtraBold.woff") format("woff");
+      font-weight: 800;
+      font-style: normal;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: metropolis, sans-serif;
+      background-color: #f8f2f2;
+    }
+
+    html {
+      /* font-size: calc(15px + 0.390625vw); */
+      font-size: calc(12px + 0.6vw);
+    }
+
+    @media (min-width: 1024px) {
+      html {
+        font-size: 18.5px;
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    p {
+      line-height: 1.4;
+    }
+
+    p:not(:last-child) {
+      margin-bottom: 1.2rem;
+    }
+
+
+    .main_container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 1rem;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex_vert {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .space_between {
+      justify-content: space-between;
+    }
+
+    .space_around {
+      justify-content: space-around;
+    }
+
+    .item_align_start {
+      align-items: flex-start;
+    }
+
+    .item_align_end {
+      align-items: flex-end;
+    }
+
+    .item_align_center {
+      align-items: center;
+    }
+
+    .nav {
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid black;
+    }
+
+
+
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 120px;
+      border-bottom: 2px solid black;
+    }
+
+    .navbar-logo {
+      height: 50px;
+    }
+
+    nav {
+      position: absolute;
+      background-color: #f8f2f2;
+      top: 120px;
+      left: 0;
+      width: calc(100% - 2rem);
+      margin: 0 1rem;
+    }
+
+    nav ul {
+      list-style-type: none;
+      max-height: 0px;
+      overflow: hidden;
+      transition: all 0.5s;
+    }
+
+    nav ul li {
+      padding-left: 3rem;
+    }
+
+    nav ul li a {
+      display: inline-block;
+      padding: 12px 0;
+      /* Add your custom styles below to change appearance of links */
+      text-decoration: none;
+      letter-spacing: 0.05rem;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+      color: #c6c6c6;
+    }
+
+    #menu-checkbox {
+      display: none;
+    }
+
+    #menu-checkbox:checked~nav {
+      border-bottom: 2px solid black;
+    }
+
+    #menu-checkbox:checked~nav ul {
+      max-height: 200px;
+      padding: 15px 0;
+      transition: all 0.5s;
+    }
+
+    .navbar-toggler {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 3rem;
+      height: 2rem;
+      cursor: pointer;
+    }
+
+    .navbar-toggler .bar {
+      height: 0.3rem;
+      width: 100%;
+      background-color: black;
+      /* border-radius: 0.2rem; */
+      transition: all 600ms ease-in-out;
+    }
+
+    #menu-checkbox:checked~.navbar-toggler .bar:nth-child(1) {
+      transform: rotateZ(-225deg) translate(0.4rem, -0.35rem);
+    }
+
+    #menu-checkbox:checked~.navbar-toggler .bar:nth-child(2) {
+      transform: rotateZ(225deg) translate(0.3rem, 0.35rem);
+    }
+
+    @media (min-width: 580px) {
+      .navbar-toggler {
+        display: none;
+      }
+
+      nav {
+        position: static;
+        /* position: relative;
+        top: -10px; */
+        background-color: transparent;
+        margin: 0;
+      }
+
+      #menu-checkbox:checked~nav {
+        border-bottom: none;
+      }
+
+      nav ul {
+        max-height: unset;
+        text-align: right;
+      }
+
+      nav ul li {
+        display: inline-flex;
+
+      }
+    }
+
+
+    .photo {
+      width: 50%;
+    }
+
+    .photo img {
+      width: 100%;
+    }
+
+    .photo_contact {
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 720px) {
+      .photo_contact {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 470px) {
+      .photo_contact {
+        flex-direction: column;
+      }
+    }
+
+    .photo_pres {
+      justify-content: space-evenly;
+      ;
+    }
+
+    .photo_pres h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .photo_pres p {
+      font-style: italic;
+      font-weight: 200;
+      margin-top: 1rem;
+      line-height: 1.2;
+      font-size: 1.2rem;
+    }
+
+    .photo_pres .img_desc {
+      font-size: 1.3rem;
+      color: #aaaaaa;
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 579px) {
+      .photo_pres p {
+        font-size: 0.8rem;
+      }
+
+      .photo_pres h1 {
+        font-size: 2rem;
+        margin-top: 1.5em;
+      }
+
+      .photo_pres .img_desc {
+        font-size: 0.95rem;
+      }
+    }
+
+
+    footer {
+      background-color: #c6c6c6;
+      width: 100%;
+      padding: 3rem 0 1rem 0;
+      margin-top: 2rem;
+    }
+
+
+    .contact .content {
+      grid-column: span 2;
+      margin-top: 4rem;
+      padding-left: 4rem;
+    }
+
+    @media (max-width: 600px) {
+      .contact .content .flex {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .contact .footer_end>div {
+      margin-top: 3rem;
+      font-size: 0.7rem;
+    }
+
+    .contact .footer_end img {
+      height: 50px;
+      padding: 0;
+      margin-top: 1rem;
+      align-self: end;
+    }
+
+
+    .contact_title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      padding-bottom: 1.2rem;
+    }
+
+    .contact .content .flex>* {
+      padding-right: 1rem;
+    }
+
+    .contact img {
+      vertical-align: middle;
+      height: 40px;
+      /* padding-left: 1.2rem; */
+      padding-bottom: 0.2rem;
+    }
+
+    .contact a:first-child img {
+      padding-left: 0;
+    }
+
+    .sectionh {
+      padding: 1rem 0;
+    }
+
+    .section_grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+    }
+
+    .section_services {
+      grid-column: span 2;
+      /* row-gap: 2rem; */
+    }
+
+    @media (min-width: 768px) {
+      .section_services {
+        grid-column: span 1;
+      }
+    }
+
+    .section_services .service_img {
+      justify-self: center;
+    }
+
+    .section_services .service_img img, .section_services .service_img video {
+      max-height: 140px;
+    }
+
+    .section_services p:not(:last-child) {
+      margin-bottom: 0.8rem;
+    }
+
+    .section_services p {
+      font-size: 0.95rem;
+    }
+
+    /* @media (min-width: 768px) {
+  .section_services p {
+    line-height: 1.6;
+  }
+} */
+
+
+    .about .downloads {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+
+    @media (max-width: 768px) {
+      .about.section_grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about .downloads {
+        grid-row-start: 2;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .about .downloads .arrow {
+        display: none;
+      }
+
+      .about .content {
+        padding-left: 2rem;
+      }
+    }
+
+
+    .section {
+      display: grid;
+      grid-template-columns: 12rem auto;
+      grid-template-areas: "title title_right" "content content" "bar bar";
+      gap: 10px;
+      margin: 2rem 0;
+    }
+
+    @media only screen and (min-width: 768px) {
+      .section {
+        grid-template-areas: "title title_right" "bar content";
+      }
+    }
+
+    /* .section > * {
+  background-color: aliceblue;
+} */
+
+    .section_title {
+      font-size: 2rem;
+      font-weight: 800;
+      min-height: 2rem;
+    }
+
+    @media (max-width: 579px) {
+      .section_title {
+        font-size: 1.5rem;
+      }
+    }
+
+    .line {
+      content: "";
+      border-top: 2px solid black;
+      width: 100%;
+      align-self: center;
+      /* line-height: 2rem; */
+    }
+
+    /* .section .bar {
+  grid-area: bar;
+}
+.section .content {
+  grid-area: content;
+} */
+
+    /* .service img {
+  padding: 0 2rem;
+  height: 100px;
+} */
+    /* .section_services .line {
+  margin: 1rem 0;
+} */
+    /* .content {
+  padding: 2rem 0;
+} */
+    .service_title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      padding-bottom: 1.2rem;
+    }
+
+    .downloads .arrow {
+      margin: 3rem 0 1.5rem 0;
+      height: 3rem;
+      animation: 1s linear 0s infinite alternate arrow-move;
+    }
+
+    .link_circle {
+      border-radius: 50%;
+      border: 1.5px solid black;
+      padding: 0.8rem;
+      height: 8rem;
+      width: 8rem;
+      box-sizing: border-box;
+      font-size: 0.65rem;
+      line-height: 1.4;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+
+    .link_circle:hover {
+      background-color: #c6c6c6;
+    }
+
+    .link_circle div {
+      border-radius: 50%;
+      border: 1.5px solid black;
+      background-color: #f8f2f2;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      text-transform: uppercase;
+      padding-top: 0.4rem;
+    }
+
+    .about_title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 2rem 0;
+      text-transform: uppercase;
+      color: #c6c6c6;
+    }
+
+    .about ul {
+      list-style-type: circle;
+      line-height: 2rem;
+      /* font-size: 1.2rem; */
+      list-style-position: inside;
+    }
+
+    @keyframes arrow-move {
+      from {
+        /* pushes the sun down past the viewport */
+        transform: translateY(-20px);
+      }
+
+      to {
+        /* returns the sun to its default position */
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main_container">
+    <header>
+
+
+      <div class="menu">
+        <a class="navbar-brand" href="#" aria-label="Go Back to Home page">
+          <img src="Mjhill_logo_small.png" class="navbar-logo" alt="MJ Hill Consulting Logo"/>
+        </a>
+        <input type="checkbox" id="menu-checkbox" />
+        <label class="navbar-toggler" for="menu-checkbox">
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </label>
+        <nav>
+          <ul>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- END Navbar -->
+
+    <!-- Photo presentation -->
+    <div class="sectionh">
+      <div class="photo_pres flex item_align_center">
+        <div>
+          <h1>Mike Hill</h1>
+          <p>
+            Experienced Non-Executive<br />Director, expert witness and<br />governance
+            consultant
+          </p>
+        </div>
+        <div class="photo">
+          <img src="mike_med.jpg" alt="Photo of Mike Hill"/>
+          <div class="img_desc">Consultant based in Brisbane</div>
+        </div>
+      </div>
+      <!-- END Photo presentation -->
+
+      <!-- <div class="photo_contact contact flex space_between item_align_start"> -->
+      <div class="sectionh section_grid">
+        <div></div>
+        <div class="photo_contact contact">
+          <a href="tel:+61 409 915 219">
+            <img src="phone.svg" style="height: 35px" alt="Phone Icon"/>
+            +61 409 915 219
+          </a>
+          <a href="mailto:mjhill@mjhillconsulting.com.au">
+            <img src="mail.svg" style="height: 35px" alt="Email Icon"/>
+            mjhill@mjhillconsulting.com.au
+          </a>
+        </div>
+      </div>
+
+      <a id="services"></a>
+      <div class="sectionh section_grid">
+        <!-- <div class="section"> -->
+        <div class="section_title">SERVICES</div>
+        <div class="line"></div>
+        <!-- </div> -->
+      </div>
+
+      <div class="section_grid">
+        <div class=""></div>
+        <div class="section_services section_grid">
+          <!-- <div class="service flex item_align_center"> -->
+          <div class="sectionh service_img">
+              <img src="circles_anim.gif" alt="Animation of moving circles"/>
+              <!--<video autoplay loop muted playsinline>-->
+              <!--    <source src="circles_anim.webm" type="video/webm" />-->
+              <!--    <source src="circles_anim.mp4" type="video/mp4" />-->
+              <!--  </video>-->
+          </div>
+          <div class="sectionh">
+            <div class="service_title">Board roles</div>
+            <p>Non-Executive Chair</p>
+            <p>Non-Executive Director</p>
+            <p>Audit, Finance and Risk Committees</p>
+          </div>
+          <!-- </div> -->
+          <div class="sectionh" style="grid-column: span 2">
+            <div class="section_title flex">
+              <div class="line"></div>
+            </div>
+          </div>
+          <!-- <div class="service flex item_align_center"> -->
+          <div class="sectionh service_img">
+              <img src="squares_anim.gif" alt="Animation of moving squares"/>
+              <!--<video autoplay loop muted playsinline>-->
+              <!--    <source src="squares_anim.webm" type="video/webm" />-->
+              <!--    <source src="squares_anim.mp4" type="video/mp4" />-->
+              <!--  </video>-->
+          </div>
+          <div class="sectionh">
+            <div class="service_title">Consulting</div>
+            <p>Insolvency Independent expert</p>
+            <p>Governance advisory</p>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+
+      <a id="about"></a>
+      <div class="sectionh section_grid">
+
+        <!-- <div class="section"> -->
+        <div class="section_title">ABOUT</div>
+        <div class="line"></div>
+
+      </div>
+
+      <div class="about section_grid">
+        <div class="downloads">
+          <img class="arrow" src="arrow.svg" />
+          <a href="Michael_Hill_CV.pdf" target="_blank" class="sectionh">
+            <div class="link_circle">
+              <div>PROFESSIONAL<br>CV</div>
+            </div>
+          </a>
+          <a href="Michael_Hill_Board_Resume.pdf?v=2" target="_blank" class="sectionh" >
+            <div class="link_circle">
+              <div>BOARD CV</div>
+            </div>
+          </a>
+        </div>
+        <div class="sectionh content">
+          <p>
+            Mike has been a chartered accountant for over 30 years, a registered
+            liquidator for over 20 years and has also specialised in forensic
+            accounting. Mike was a founding partner of McGrathNicol in 2004 and
+            previously worked for KPMG.
+          </p>
+          <p>
+            Mike has undertaken insolvency assignments, performed viability
+            assessments, undertaken governance and business case reviews and
+            acted as both an independent expert and consulting expert in matters
+            being litigated through the Federal Court and state Supreme Courts.
+            Mike has a particular focus on the preparation of expert reports
+            dealing with the solvency of organisations. Mike has also been a
+            director of an APRA licensed superannuation Acting Trustee. Mike has
+            undertaken regulatory work for ASIC and APRA as well as for the
+            Queensland Non-State Schools Accreditation Board focusing on
+            governance and insolvency related matters.
+          </p>
+          <div class="about_title">QUALIFICATIONS / MEMBERSHIPS</div>
+          <ul>
+            <li>
+              Bachelor of Commerce (Accounting)/Law, University of New South
+              Wales
+            </li>
+            <li>
+              Graduate in Applied Finance, Securities Institute (now FINSIA)
+            </li>
+            <li>Chartered Accountant, CA ANZ</li>
+            <li>Forensic Accounting Specialist, CA ANZ</li>
+            <li>Registered Liquidator</li>
+            <li>Member ARITA</li>
+            <li>Graduate Australian Institute of Company Directors (GAICD)</li>
+            <li>Life member, Women on Boards</li>
+          </ul>
+          <div class="about_title">Current Board and governance roles</div>
+          <ul>
+            <li>Chair, Foodbank Queensland</li>
+            <li>Non-Executive Director, Foodbank Australia</li>
+            <li>Non-Executive Director, Craft Queensland trading as ARTISAN</li>
+            <li>Non-Executive Director, COEX Limited (Containers for Change)</li>
+            <li>Non-Executive Director, Southbank Corporation Limited</li>
+            <!--<li>Member, Audit Committee, Brisbane City Council</li>-->
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- END main_container -->
+
+  <footer>
+    <div class="main_container"> <a id="contact"></a>
+      <div class="sectionh section_grid contact">
+        <div class="section_title">CONTACT</div>
+        <div></div>
+        <div class="content">
+          <div class="contact_title">
+            MIKE HILL
+          </div>
+          <div class="flex item_align_center">
+            <a href="tel:+61 409 915 219">
+              <img src="phone.svg" style="margin-left: -9px;" alt="Phone Icon"/>
+              +61 409 915 219
+            </a>
+            <a href="mailto:mjhill@mjhillconsulting.com.au">
+              <img src="mail.svg" style="margin-left: -4px;" alt="Email Icon"/>
+              mjhill@mjhillconsulting.com.au
+            </a>
+            <a href="https://www.linkedin.com/in/mikehillmcgrathnicol/" target="_blank" aria-label="Go to LinkdeIn profile">
+              <img src="linkedin-sign.png" style="height: 30px" alt="LinkedIn logo"/>
+            </a>
+          </div>
+
+          <div class="flex space_between item_align_end footer_end">
+            <div>
+              <p style="margin-bottom: 0.4rem;">
+                Michael Hill trading As MJHill Consulting - ABN 96 229 784 474
+              </p>
+              <p style="color: #3d3d3d">
+                Liability limited by a scheme approved under Professional
+                Standards Legislation
+              </p>
+            </div>
+            <img src="Mjhill_logo_small.png" alt="MJ Hill Consulting Logo"/>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+</body>
+
+</html>
