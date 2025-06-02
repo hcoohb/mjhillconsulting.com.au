@@ -2,6 +2,6 @@
 Header always set Content-Security-Policy "default-src 'self'; script-src 'unsafe-inline' https: 'strict-dynamic'; style-src 'unsafe-inline'; font-src 'self'; img-src 'self'; object-src 'none'"
 
 # Redirect to https:
-RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://example.com/$1 [L,R=301]
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://example.com/$1 [L,R=301]
